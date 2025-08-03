@@ -1,69 +1,43 @@
-# React + TypeScript + Vite
+# 🧠 3-in-1 Frontend Productivity Suite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A React + TypeScript application combining three power-packed tools:
+> ✅ Task Manager, 📊 Dashboard, and 🖍 MRI Annotation.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧟‍♂️ Villains I Faced (and How I Defeated Them)
 
-## Expanding the ESLint configuration
+Throughout this project, the biggest villain I encountered was the chaotic beast known as State Desync — especially when building the annotation tool. Managing zoom, pan, and polygon drawing on a <canvas> while syncing that with React state felt like a battle against invisible forces. Sometimes the image wouldn’t load, sometimes the polygons wouldn’t render after zooming, and sometimes my canvas would straight-up give me the silent treatment.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+But every villain has a weakness.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Armed with the power of documentation, blog deep dives, and of course, the friendship of ChatGPT, I dissected the canvas lifecycle and React render behavior. I learned how to batch drawing operations and refactor side-effects using useEffect smartly. I also had to carefully design my coordinate transformation logic to make zooming and panning feel smooth — not like you're trying to draw on a trampoline.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧪 Requirements & Environment
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Node Version**: `v18.17.1`
+- **Package Manager**: `npm` (or `pnpm`/`yarn` if preferred)
+- **Framework**: React with Vite + TypeScript
+- **CSS**: Tailwind CSS
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 How to Run the Project
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/soyebcodes/404-frontend
+
+cd 3in1-productivity-app
+
+# 2. Install dependencies
+npm install
+
+# 3. Run the development server
+npm run dev
+
+# The app will be available at:
+# http://localhost:5173
 ```
