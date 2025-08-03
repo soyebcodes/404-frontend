@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import AnnotationCanvas from "../components/annotate/AnnotationCanvas";
+import { useState, useEffect } from "react";
+import AnnotationCanvas from "../components/Annotate/AnnotationCanvas";
 
 type Point = { x: number; y: number };
 type Polygon = Point[];

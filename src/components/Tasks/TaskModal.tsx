@@ -9,7 +9,6 @@ type Props = {
 
 export default function TaskModal({ onClose }: Props) {
   const addTask = useTaskStore((s) => s.addTask);
-  const selectedDate = useTaskStore((s) => s.selectedDate);
 
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState<"Low" | "Medium" | "High">("Low");
@@ -50,6 +49,7 @@ export default function TaskModal({ onClose }: Props) {
         <select
           className="border p-2 w-full mb-2"
           value={priority}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           onChange={(e) => setPriority(e.target.value as any)}
         >
           <option>Low</option>

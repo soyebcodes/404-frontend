@@ -1,5 +1,3 @@
-import React from "react";
-
 type Props = {
   images: string[];
   currentIndex: number;

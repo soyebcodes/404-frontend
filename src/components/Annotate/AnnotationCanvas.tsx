@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useEffect, useState } from "react";
 import { FaICursor } from "react-icons/fa";
 import { FiEdit2, FiTrash2, FiXCircle } from "react-icons/fi";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import {
   BarChart,
   Bar,
@@ -128,7 +128,7 @@ export default function DashboardPage() {
               outerRadius={80}
               label
             >
-              {chartData.tagsData.map((entry, index) => (
+              {chartData.tagsData.map((_, index) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}
