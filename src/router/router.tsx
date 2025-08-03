@@ -4,10 +4,12 @@ import TasksPage from "../pages/TaskPage";
 import DashboardPage from "../pages/DashboardPage";
 import AnnotatePage from "../pages/AnnotatePage";
 import RootLayout from "../layouts/RootLayout";
+import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <NotFound />,
     Component: RootLayout,
     children: [
       {
