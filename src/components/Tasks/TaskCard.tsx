@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import type { Task } from "../../types/task";
 import { useDraggable } from "@dnd-kit/core";
 
@@ -6,22 +7,29 @@ type Props = {
 };
 
 export default function TaskCard({ task }: Props) {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: task.id,
-  });
+  const { attributes, listeners, setNodeRef, transform, isDragging } =
+    useDraggable({
+      id: task.id,
+    });
 
-  const style = {
+  const style: React.CSSProperties = {
     transform: transform
       ? `translate(${transform.x}px, ${transform.y}px)`
       : undefined,
+    transition: transform ? "transform 200ms ease" : undefined,
+    zIndex: transform ? 50 : "auto", // bring dragged item to front
   };
+
   return (
     <div
       ref={setNodeRef}
       {...listeners}
       {...attributes}
       style={style}
-      className="bg-white p-3 rounded shadow text-left"
+      className={clsx(
+        "bg-white rounded p-2 shadow border cursor-move select-none",
+        isDragging && "opacity-70 scale-[1.02] border-blue-400"
+      )}
     >
       <h3 className="font-semibold">{task.title}</h3>
       <p className="text-sm text-gray-500">{task.dueDate}</p>
