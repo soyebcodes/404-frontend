@@ -1,20 +1,48 @@
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 
 export default function Navbar() {
+  const baseClass = "px-3 py-2 rounded hover:underline";
+  const activeClass = "font-bold text-blue-600 underline";
+
   return (
     <nav className="flex space-x-6 p-4 bg-gray-100 shadow">
-      <Link to="/tasks" className="hover:text-blue-600">
+      <NavLink
+        to="/tasks"
+        className={({ isActive }) =>
+          isActive ? `${baseClass} ${activeClass}` : baseClass
+        }
+      >
         🗂 Tasks
-      </Link>
-      <Link to="/dashboard" className="hover:text-green-600">
+      </NavLink>
+
+      <NavLink
+        to="/dashboard"
+        className={({ isActive }) =>
+          isActive ? `${baseClass} ${activeClass}` : baseClass
+        }
+      >
         📊 Dashboard
-      </Link>
-      <Link to="/annotate" className="hover:text-purple-600">
+      </NavLink>
+
+      <NavLink
+        to="/annotate"
+        className={({ isActive }) =>
+          isActive ? `${baseClass} ${activeClass}` : baseClass
+        }
+      >
         🖍 Annotate
-      </Link>
-      <Link to="/" className="ml-auto hover:text-gray-600">
+      </NavLink>
+
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive
+            ? `${baseClass} ${activeClass} ml-auto`
+            : `${baseClass} ml-auto`
+        }
+      >
         🏠 Home
-      </Link>
+      </NavLink>
     </nav>
   );
 }

@@ -98,7 +98,6 @@ export default function DashboardPage() {
           </BarChart>
         </ResponsiveContainer>
       </ChartCard>
-
       <ChartCard title="Completed Tasks by Date">
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={chartData.doneByDate}>
@@ -115,7 +114,6 @@ export default function DashboardPage() {
           </LineChart>
         </ResponsiveContainer>
       </ChartCard>
-
       <ChartCard title="Tasks by Tag">
         <ResponsiveContainer width="100%" height={250}>
           <PieChart>

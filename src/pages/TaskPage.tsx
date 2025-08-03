@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import TaskModal from "../components/Tasks/TaskModal";
 import DateSelector from "../components/Tasks/DateSelector";
@@ -19,7 +20,7 @@ export default function TasksPage() {
         <h1 className="text-2xl font-bold">🗂 Task Manager</h1>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer"
         >
           + Add Task
         </button>
