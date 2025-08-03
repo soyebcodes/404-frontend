@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useTaskStore } from "../../store/useTaskStore";
 import type { TaskStatus } from "../../types/task";
 import TaskCard from "./TaskCard";
+import { useDroppable } from "@dnd-kit/core";
 
 type Props = { status: TaskStatus };
 
@@ -13,8 +14,13 @@ export default function Column({ status }: Props) {
     [allTasks, status]
   );
 
+  const { setNodeRef } = useDroppable({ id: status });
+
   return (
-    <div className="bg-gray-100 rounded p-3 shadow min-h-[200px]">
+    <div
+      ref={setNodeRef}
+      className="bg-gray-100 rounded p-3 shadow min-h-[200px]"
+    >
       <h2 className="font-semibold mb-2">{status}</h2>
       {tasks.length === 0 && <p className="text-gray-500 text-sm">No tasks</p>}
       <div className="space-y-2">

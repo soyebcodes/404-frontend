@@ -1,12 +1,28 @@
 import type { Task } from "../../types/task";
+import { useDraggable } from "@dnd-kit/core";
 
 type Props = {
   task: Task;
 };
 
 export default function TaskCard({ task }: Props) {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: task.id,
+  });
+
+  const style = {
+    transform: transform
+      ? `translate(${transform.x}px, ${transform.y}px)`
+      : undefined,
+  };
   return (
-    <div className="bg-white p-3 rounded shadow text-left">
+    <div
+      ref={setNodeRef}
+      {...listeners}
+      {...attributes}
+      style={style}
+      className="bg-white p-3 rounded shadow text-left"
+    >
       <h3 className="font-semibold">{task.title}</h3>
       <p className="text-sm text-gray-500">{task.dueDate}</p>
       <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">
