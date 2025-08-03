@@ -1,14 +1,27 @@
+import { useMemo } from "react";
+import { useTaskStore } from "../../store/useTaskStore";
 import type { TaskStatus } from "../../types/task";
+import TaskCard from "./TaskCard";
 
-type Props = {
-  status: TaskStatus;
-};
+type Props = { status: TaskStatus };
 
 export default function Column({ status }: Props) {
+  const allTasks = useTaskStore((s) => s.tasks);
+
+  const tasks = useMemo(
+    () => allTasks.filter((t) => t.status === status),
+    [allTasks, status]
+  );
+
   return (
     <div className="bg-gray-100 rounded p-3 shadow min-h-[200px]">
       <h2 className="font-semibold mb-2">{status}</h2>
-      {/* Tasks will go here */}
+      {tasks.length === 0 && <p className="text-gray-500 text-sm">No tasks</p>}
+      <div className="space-y-2">
+        {tasks.map((task) => (
+          <TaskCard key={task.id} task={task} />
+        ))}
+      </div>
     </div>
   );
 }
